@@ -1,11 +1,23 @@
 import { useState } from "react";
+import ReactDOM from 'react-dom';
 import "../Home/home.css"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BuzzerTimes from "./BuzzerTimes.js"
+import SearchRecord from "./searchRecord";
+
+
+
 
 function Home() {
 
+    const openSearchPopup = () => {
+        const searchPopup = window.open("", "Search Record", "width=800,height=600");
+        searchPopup.document.body.innerHTML = "<div id='search-record'></div>";
+        ReactDOM.render(<SearchRecord />, searchPopup.document.getElementById("search-record"));
+      };
+
+    
+    
     const [date] = useState("");
     const [formData, setFormData] = useState({
         date: "",
@@ -16,12 +28,10 @@ function Home() {
         upgradePlanned: "",
         upgradeActual: "",
     });
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const requestOptions = {
@@ -47,7 +57,6 @@ function Home() {
                 toast.error("make sure All inputs are Entered !");
             });
     };
-
     const handleUpdate = (event) => {
         event.preventDefault();
         const requestOptions = {
@@ -79,10 +88,12 @@ function Home() {
                 console.error("There was an error!", error);
                 toast.error(`make sure all fields are filled !`)
             });
+       
     }
+
+   
     return (
 <div>
-    <BuzzerTimes/>
         <div>
             <ToastContainer className="Toast"
                 position="bottom-right"
@@ -97,7 +108,6 @@ function Home() {
                 theme="dark"
                 font-size="1rem"
                 padding="4px" />
-
             <div>
                 <input
                     className="dateSelection"
@@ -150,9 +160,11 @@ function Home() {
                 <div className="submit">
                     <button className="submit" type="submit" onClick={handleChange}>save</button>
                     <button className="submit" type="submit" onClick={handleUpdate}>update</button>
+                    <button onClick={openSearchPopup}>Search Record</button>
                 </div>
             </form>
         </div>
+        
 
 </div>
     )

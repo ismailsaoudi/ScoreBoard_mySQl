@@ -18,29 +18,34 @@
 .tableData{
    
     font-size: 2rem;
-    width: 100%;
+    width: 66%;
     
     text-align: center;
 
 }
 
 .submit{
-    
     font-size: 1rem;
     width: 30%;
     text-align: center;
-    color: blue;
-    
-   
+    color: blue;  
 }
 
 .Input{
     display: flex;
-    font-size: 10rem;
-    width: 30rem;
+    font-size: 8rem;
+    width: 20rem;
     height: 10rem;
-    border: 3px solid rgb(11, 34, 11);
+    border: 2px solid rgb(11, 34, 11);
     text-align: center;
     align-content: space-around;
     
+}
+
+.dateSelection{
+        font-size: 6rem;
+        text-align: center;
+        width: 100%;
+       
+        
 }

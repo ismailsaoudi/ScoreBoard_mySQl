@@ -50,11 +50,12 @@ app.put("/api/update", (req, res) => {
     });
   });
 
-
-  app.get("/api/search/:start/:end", (req, res) => {
+  app.get("/api/search", (req, res) => {
+    const { start, end } = req.query;
+    if (!start || !end) {
+      return res.status(400).json({ message: "Missing start or end date" });
+    }
     const sqlSelect = "SELECT * FROM weeklytable WHERE date BETWEEN ? AND ?";
-    const start = req.params.start;
-    const end = req.params.end;
     db.query(sqlSelect, [start, end], (err, result) => {
       if (err) {
         return res.status(500).json({ message: "Internal server error" });
@@ -62,7 +63,6 @@ app.put("/api/update", (req, res) => {
       res.send(result);
     });
   });
-
 
 app.listen(5001, () => {
     console.log("server is running on port 5001");
