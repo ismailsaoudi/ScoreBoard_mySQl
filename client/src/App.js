@@ -1,14 +1,19 @@
-import Header from './Components/Header/header'
-import Home from './Components/Home/home'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import AuthForm from './Components/AuthForm';
+import Home from './Components/Home/home';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Header/>
-      <Home/>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<AuthForm />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,69 @@
+/* AuthForm.css */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fafafa;
+  }
+  
+  .card {
+    width: 30%;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Title {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #262626;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .email,
+  .password {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    background-color: #fafafa;
+  }
+  
+  button[type="submit"] {
+    background-color: #0095f6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 3px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0085e5;
+  }
+  
+  button[type="button"] {
+    background-color: transparent;
+    color: #0095f6;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 3px;
+  }
+  
+  button[type="button"]:hover {
+    text-decoration: underline;
+  }
+  
