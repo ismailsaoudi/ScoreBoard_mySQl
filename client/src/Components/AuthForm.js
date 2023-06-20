@@ -1,13 +1,12 @@
-// AuthForm.js
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../Components/AuthForm.css"
 
 const AuthForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSignUp, setIsSignUp] = useState(true);
-  const [redirectToHome, setRedirectToHome] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,52 +35,46 @@ const AuthForm = () => {
 
       // Redirect to home page on successful sign-up or login
       if (response.ok) {
-        setRedirectToHome(true);
+        navigate('/home');
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  if (redirectToHome) {
-    // Redirect to the home page
-    window.location.href = '/home';
-    return null;
-  }
-
   return (
     <div className="auth-form-container">
-      <h1>Garment Scoreboard</h1>
-    <div className="container">
-      <div className="card">
-        <form onSubmit={handleSubmit}>
-          <h1 className='Title'>{isSignUp ?  'Sign Up' : 'Log In'}</h1>
-          <div className='form'>
-            <input className='email'
-              type="text"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input className='password'
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit">{isSignUp ? 'Sign Up' : 'Log In'}</button>
-          <p>
-            {isSignUp
-              ? 'Already have an account?'
-              : 'Don\'t have an account yet?'}
-            <button type="button" onClick={() => setIsSignUp(!isSignUp)}>
-              {isSignUp ? 'Log In' : 'Sign Up'}
-            </button>
-          </p>
-        </form>
+      <h2>Garment Scoreboard</h2>
+      <div className="container">
+        <div className="card">
+          <form onSubmit={handleSubmit}>
+            <h1 className='Title'>{isSignUp ?  'Sign Up' : 'Log In'}</h1>
+            <div className='form'>
+              <input className='email'
+                type="text"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input className='password'
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit">{isSignUp ? 'Sign Up' : 'Log In'}</button>
+            <p>
+              {isSignUp
+                ? 'Already have an account?'
+                : 'Don\'t have an account yet?'}
+              <button type="button" onClick={() => setIsSignUp(!isSignUp)}>
+                {isSignUp ? 'Log In' : 'Sign Up'}
+              </button>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
